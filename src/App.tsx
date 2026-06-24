@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { audienceOptions, FALLBACK_TEXT, initialFormData, PRIVACY_NOTICE, schoolLevelOptions, teacherCheckOptions, toneOptions } from "./data/defaults";
+import { FooterNotice } from "./components/FooterNotice";
+import { UsageNotice } from "./components/UsageNotice";
 import { fallbackRelatedTools, fallbackTopics } from "./data/fallbackData";
 import type { AppData, Audience, FaqFormData, FaqResult, SchoolLevel, TeacherCheck, Tone } from "./types/faq";
 import { fetchFaqData } from "./utils/api";
@@ -61,6 +63,7 @@ export default function App() {
   return <div className="min-h-screen bg-[#F7F9FC] text-slate-900"><main className="mx-auto grid w-full max-w-[1440px] gap-5 px-4 py-5 md:px-6 md:py-8">
     <header className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100 md:p-8"><div className="flex flex-wrap items-center gap-3"><h1 className="text-2xl font-black text-[#1A3B8B] md:text-3xl">보건실 FAQ 문구 정리 도우미</h1><span className="rounded-full bg-[#DDF7F2] px-3 py-1 text-sm font-black text-[#1A3B8B]">Lite</span></div><p className="mt-3 text-base leading-7 text-slate-700 md:text-lg">자주 받는 보건실 FAQ에 대한 학생용 답변, 담임교사용 안내, 교직원 협조 안내, 게시용 문구를 빠르게 확인하고 복사합니다.</p></header>
     <section className="sticky top-3 z-10 rounded-2xl border border-[#D94F70]/20 bg-[#fff7fa] p-4 shadow-sm"><p className="text-sm leading-6 text-slate-700 md:text-base"><strong className="text-[#D94F70]">개인정보 주의 </strong>{PRIVACY_NOTICE}</p></section>
+    <UsageNotice />
     {loadState === "loading" && <div className="rounded-2xl bg-white p-4 text-sm font-bold text-[#1A3B8B] shadow-sm ring-1 ring-slate-100">FAQ 데이터를 불러오는 중입니다.</div>}
     {loadState === "error" && <div className="rounded-2xl bg-white p-4 text-sm font-bold text-[#D94F70] shadow-sm ring-1 ring-slate-100">FAQ 데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</div>}
     <div className="grid gap-5 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-start xl:grid-cols-[380px_minmax(0,1fr)]">
@@ -85,6 +88,6 @@ export default function App() {
       </section>
     </div>
     <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100 md:p-6"><h2 className="text-xl font-bold text-[#1A3B8B]">관련 도구</h2><div className="mt-5 grid gap-3 md:grid-cols-4">{data.relatedTools.map((tool) => <div key={tool.toolName} className="rounded-xl border border-slate-100 bg-[#F7F9FC] p-4 text-sm font-semibold leading-6 text-slate-700"><h3 className="text-base font-bold text-[#1A3B8B]">{tool.toolName}</h3><p className="mt-2 font-medium text-slate-600">{tool.description}</p><span className="mt-4 inline-flex min-h-9 items-center rounded-lg bg-white px-3 text-[12.5px] font-bold text-[#1A3B8B] ring-1 ring-slate-200">{tool.buttonLabel}</span></div>)}</div></section>
-    <footer className="py-8 text-center text-sm font-semibold leading-6 text-slate-600">쑤캥T 보건실 도구모음 Lite / 개인정보를 입력하지 마세요 / 학교 기준에 맞게 검토 후 사용</footer>
+    <FooterNotice />
   </main>{toast && <div className="fixed bottom-5 left-1/2 z-20 -translate-x-1/2 rounded-full bg-[#1A3B8B] px-5 py-3 text-sm font-bold text-white shadow-lg">{toast}</div>}</div>;
 }
