@@ -1,4 +1,4 @@
-import { compactPrivacyNotice, detailedUsageNotice } from "../data/legalNotices";
+import { compactPrivacyNotice, detailedUsageNotice, USAGE_BADGES } from "../data/legalNotices";
 
 export function UsageNotice() {
   return (
@@ -10,6 +10,13 @@ export function UsageNotice() {
         </span>
       </div>
       <div className="mt-4 grid gap-3">
+        <div className="flex flex-wrap gap-2">
+          {USAGE_BADGES.map((badge) => (
+            <span key={badge} className="rounded-full bg-[#E6FAF6] px-3 py-1 text-xs font-bold text-[#1A3B8B] ring-1 ring-[#BFEDE5]">
+              {badge}
+            </span>
+          ))}
+        </div>
         {detailedUsageNotice.map((text) => (
           <p key={text}>{text}</p>
         ))}
