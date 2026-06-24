@@ -61,7 +61,22 @@ export default function App() {
   const copied = () => { setToast("복사 완료"); window.setTimeout(() => setToast(""), 1500); };
 
   return <div className="min-h-screen bg-[#F7F9FC] text-slate-900"><main className="mx-auto grid w-full max-w-[1440px] gap-5 px-4 py-5 md:px-6 md:py-8">
-    <header className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100 md:p-8"><div className="flex flex-wrap items-center gap-3"><h1 className="text-2xl font-black text-[#1A3B8B] md:text-3xl">보건실 FAQ 문구 정리 도우미</h1><span className="rounded-full bg-[#DDF7F2] px-3 py-1 text-sm font-black text-[#1A3B8B]">Lite</span></div><p className="mt-3 text-base leading-7 text-slate-700 md:text-lg">자주 받는 보건실 FAQ에 대한 학생용 답변, 담임교사용 안내, 교직원 협조 안내, 게시용 문구를 빠르게 확인하고 복사합니다.</p></header>
+    <header className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100 md:p-8">
+      <div className="flex items-center justify-between gap-4">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-3">
+            <h1 className="text-2xl font-black text-[#1A3B8B] md:text-3xl">보건실 FAQ 문구 정리 도우미</h1>
+            <span className="rounded-full bg-[#DDF7F2] px-3 py-1 text-sm font-black text-[#1A3B8B]">Lite</span>
+          </div>
+          <p className="mt-3 text-base leading-7 text-slate-700 md:text-lg">자주 받는 보건실 FAQ에 대한 학생용 답변, 담임교사용 안내, 교직원 협조 안내, 게시용 문구를 빠르게 확인하고 복사합니다.</p>
+        </div>
+        <img
+          src="/otter-health-teacher.png"
+          alt="수달 보건교사 캐릭터"
+          className="h-16 w-16 shrink-0 rounded-full border border-white/70 bg-[#E6FAF6] object-cover shadow-[0_10px_28px_rgba(26,59,139,0.16)] sm:h-[72px] sm:w-[72px] md:h-24 md:w-24"
+        />
+      </div>
+    </header>
     <section className="sticky top-3 z-10 rounded-2xl border border-[#D94F70]/20 bg-[#fff7fa] p-4 shadow-sm"><p className="text-sm leading-6 text-slate-700 md:text-base"><strong className="text-[#D94F70]">개인정보 주의 </strong>{PRIVACY_NOTICE}</p></section>
     <UsageNotice />
     {loadState === "loading" && <div className="rounded-2xl bg-white p-4 text-sm font-bold text-[#1A3B8B] shadow-sm ring-1 ring-slate-100">FAQ 데이터를 불러오는 중입니다.</div>}
